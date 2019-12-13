@@ -28,9 +28,10 @@ public class TopicCounsumer3 {
         // 声明exchange
         channel.exchangeDeclare(EXCHANGE_NAME, "topic");
         // 绑定队列到交换机
-        channel.queueBind(QUEUE_NAME,EXCHANGE_NAME,"item.query");
-        channel.queueBind(QUEUE_NAME,EXCHANGE_NAME,"item.update");
-        channel.queueBind(QUEUE_NAME,EXCHANGE_NAME,"item.delete");
+//        channel.queueBind(QUEUE_NAME,EXCHANGE_NAME,"item.query");
+//        channel.queueBind(QUEUE_NAME,EXCHANGE_NAME,"item.update");
+//        channel.queueBind(QUEUE_NAME,EXCHANGE_NAME,"item.delete");
+        channel.queueBind(QUEUE_NAME,EXCHANGE_NAME,"item.#");
 
         //保证一次只分发一个
         channel.basicQos(1);
@@ -39,13 +40,13 @@ public class TopicCounsumer3 {
             @Override
             public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, byte[] body) throws IOException {
                 String message = new String(body, "UTF-8");
-                System.out.println(" [3] Topic Received '" + message + "'");
+                System.out.println("consumer[3] topic Received :" + message + "'");
                 try {
-                    Thread.sleep(3000);
+                    Thread.sleep(1000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }finally {
-                    System.out.println("[3] Done");
+                    System.out.println("consumer[3] Done");
                     channel.basicAck(envelope.getDeliveryTag(), false);
                 }
 

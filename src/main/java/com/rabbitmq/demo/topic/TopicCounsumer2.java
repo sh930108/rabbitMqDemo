@@ -36,13 +36,13 @@ public class TopicCounsumer2 {
             @Override
             public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, byte[] body) throws IOException {
                 String message = new String(body, "UTF-8");
-                System.out.println(" [2] fonout Received '" + message + "'");
+                System.out.println("consumer[2] topic Received :" + message + "'");
                 try {
-                    Thread.sleep(3000);
+                    Thread.sleep(1000);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }finally {
-                    System.out.println("[2] Done");
+                    System.out.println("consumer[2] Done");
                     channel.basicAck(envelope.getDeliveryTag(), false);
                 }
 

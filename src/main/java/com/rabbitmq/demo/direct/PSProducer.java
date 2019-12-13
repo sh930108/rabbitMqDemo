@@ -17,7 +17,7 @@ import java.util.concurrent.TimeoutException;
 public class PSProducer {
 
     private final static String EXCHANGE_NAME = "test_exchange_direct";
-    private final static String ROUTING_KEY = "error";
+    private final static String ROUTING_KEY = "update";
 
     public static void main(String[] args) throws IOException, TimeoutException {
         /* 获取一个连接 */

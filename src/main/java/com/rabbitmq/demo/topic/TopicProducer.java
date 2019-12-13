@@ -25,7 +25,7 @@ public class TopicProducer {
         channel.exchangeDeclare(EXCHANGE_NAME, "topic");
 
         // 消息内容
-        String message = "id=1001";
+        String message = "id=1001 ======================";
         channel.basicPublish(EXCHANGE_NAME, "item.query", null, message.getBytes());
         System.out.println(" [x] Sent '" + message + "'");
 
