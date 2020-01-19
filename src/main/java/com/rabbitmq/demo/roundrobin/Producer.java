@@ -32,7 +32,7 @@ public class Producer {
         //第一个参数是exchangeName(默认情况下代理服务器端是存在一个""名字的exchange的,
         //因此如果不创建exchange的话我们可以直接将该参数设置成"",如果创建了exchange的话
         //我们需要将该参数设置成创建的exchange的名字),第二个参数是路由键
-        for(int i=0;i < 100;i++){
+        for(int i=0;i < 50;i++){
             String msg="Hello  Simple QUEUE !"+ i;
             channel.basicPublish("", QUEUE_NAME, null, msg.getBytes());
             System.out.println("[]"+i+"---------send ms :"+msg);

@@ -15,6 +15,7 @@ import java.util.concurrent.TimeoutException;
 public class TopicCounsumer1 {
 
     private final static String QUEUE_NAME = "topic_queue_1";
+    private final static String QUEUE_1_NAME = "topic_queue_2";
     private final static String EXCHANGE_NAME = "exchange_topic";
 
     public static void main(String[] args) throws IOException, TimeoutException {
@@ -22,30 +23,29 @@ public class TopicCounsumer1 {
         Connection connection = ConnectUtils.getConnect();
         /*从连接中创建通道*/
         final Channel channel = connection.createChannel();
+        channel.exchangeDeclare(EXCHANGE_NAME, "topic",true);
         // 声明队列
-        channel.queueDeclare(QUEUE_NAME,false,false,false,null);
+        channel.queueDeclare(QUEUE_NAME,true,false,false,null);
         // 绑定队列到交换机
-        channel.queueBind(QUEUE_NAME,EXCHANGE_NAME,"#.query");
+        channel.queueBind(QUEUE_NAME,EXCHANGE_NAME,"#.delete");
+
 
         //保证一次只分发一个
         channel.basicQos(1);
-
-        DefaultConsumer consumer = new DefaultConsumer(channel){
+        DefaultConsumer consumer = null;
+        consumer = new DefaultConsumer(channel){
             @Override
             public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, byte[] body) throws IOException {
                 String message = new String(body, "UTF-8");
-                System.out.println("consumer[1] topic Received :" + message + "'");
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }finally {
-                    System.out.println("consumer[1] Done");
-                    channel.basicAck(envelope.getDeliveryTag(), false);
-                }
-
+                System.out.println("channel 1");
+                System.out.println("Received :" + message + ";");
+                System.out.println("appId :" + properties.getAppId());
+                System.out.println("deliveryMode :" + properties.getDeliveryMode());
+                channel.basicAck(envelope.getDeliveryTag(), false);
             }
         };
+
+
 
         //手动确认消息
         boolean autoAck = false;

@@ -14,7 +14,7 @@ import java.util.concurrent.TimeoutException;
  **/
 public class DirectCounsumer3 {
 
-    private final static String QUEUE_NAME = "direct_queue_3";
+    private final static String QUEUE_NAME = "direct_queue_4";
     private final static String EXCHANGE_NAME = "test_exchange_direct";
 
     public static void main(String[] args) throws IOException, TimeoutException {
@@ -35,23 +35,15 @@ public class DirectCounsumer3 {
             @Override
             public void handleDelivery(String consumerTag, Envelope envelope, AMQP.BasicProperties properties, byte[] body) throws IOException {
                 String message = new String(body, "UTF-8");
-                System.out.println(" [1] fonout Received '" + message + "'");
-                try {
-                    Thread.sleep(3000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }finally {
-                    System.out.println("[1] Done");
-                    channel.basicAck(envelope.getDeliveryTag(), false);
-                }
+
 
             }
         };
 
         //手动确认消息
-        boolean autoAck = false;
+        boolean autoAck = true;
         //监听队列
-        channel.basicConsume(QUEUE_NAME, autoAck, consumer);
+        channel.basicConsume(QUEUE_NAME, true, consumer);
 
     }
 

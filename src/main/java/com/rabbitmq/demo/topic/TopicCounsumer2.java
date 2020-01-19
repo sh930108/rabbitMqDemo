@@ -23,7 +23,7 @@ public class TopicCounsumer2 {
         /*从连接中创建通道*/
         final Channel channel = connection.createChannel();
         // 声明队列
-        channel.queueDeclare(QUEUE_NAME,false,false,false,null);
+        channel.queueDeclare(QUEUE_NAME,true,false,false,null);
         // 绑定队列到交换机
         channel.queueBind(QUEUE_NAME,EXCHANGE_NAME,"item.delete");
         channel.queueBind(QUEUE_NAME,EXCHANGE_NAME,"item.update");

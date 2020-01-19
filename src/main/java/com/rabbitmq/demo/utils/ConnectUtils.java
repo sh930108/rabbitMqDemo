@@ -14,7 +14,8 @@ import java.util.concurrent.TimeoutException;
  **/
 public class ConnectUtils {
 
-    public  static final String HOST = "127.0.0.1";
+//    public  static final String HOST = "127.0.0.1";
+    public  static final String HOST = "10.19.131.69";
 
     public static Connection getConnect() throws IOException, TimeoutException{
         //定义连接工厂
@@ -23,11 +24,15 @@ public class ConnectUtils {
         factory.setHost(HOST);
         //端口
         //amqp协议 端口 类似与mysql的3306
-        factory.setPort(5672);
+//        factory.setPort(5672);
+        factory.setPort(6005);
         //设置账号信息，用户名、密码、vhost
-        factory.setVirtualHost("/rabbit_cat");
-        factory.setUsername("shanghao");
-        factory.setPassword("123456");
+//        factory.setVirtualHost("/rabbit_cat");
+//        factory.setUsername("shanghao");
+//        factory.setPassword("123456");
+        factory.setVirtualHost("/");
+        factory.setUsername("root");
+        factory.setPassword("U1xDNllH");
         // 通过工程获取连接
         Connection connection = factory.newConnection();
         return connection;
