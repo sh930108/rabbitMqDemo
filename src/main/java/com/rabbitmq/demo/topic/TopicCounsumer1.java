@@ -14,20 +14,19 @@ import java.util.concurrent.TimeoutException;
  **/
 public class TopicCounsumer1 {
 
-    private final static String QUEUE_NAME = "topic_queue_1";
-    private final static String QUEUE_1_NAME = "topic_queue_2";
-    private final static String EXCHANGE_NAME = "exchange_topic";
+    private final static String QUEUE_NAME = "topic_queue_2";
+    private final static String EXCHANGE_NAME = "amq.topic";
 
-    public static void main(String[] args) throws IOException, TimeoutException {
+    public static void main(String[] args) throws Exception {
         /* 获取一个连接 */
         Connection connection = ConnectUtils.getConnect();
         /*从连接中创建通道*/
         final Channel channel = connection.createChannel();
         channel.exchangeDeclare(EXCHANGE_NAME, "topic",true);
         // 声明队列
-        channel.queueDeclare(QUEUE_NAME,true,false,false,null);
+        channel.queueDeclare(QUEUE_NAME,false,false,false,null);
         // 绑定队列到交换机
-        channel.queueBind(QUEUE_NAME,EXCHANGE_NAME,"#.delete");
+        channel.queueBind(QUEUE_NAME,EXCHANGE_NAME,"hello");
 
 
         //保证一次只分发一个

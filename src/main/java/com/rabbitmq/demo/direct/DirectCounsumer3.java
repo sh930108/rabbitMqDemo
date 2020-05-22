@@ -17,7 +17,7 @@ public class DirectCounsumer3 {
     private final static String QUEUE_NAME = "direct_queue_4";
     private final static String EXCHANGE_NAME = "test_exchange_direct";
 
-    public static void main(String[] args) throws IOException, TimeoutException {
+    public static void main(String[] args) throws Exception {
         /* 获取一个连接 */
         Connection connection = ConnectUtils.getConnect();
         /*从连接中创建通道*/

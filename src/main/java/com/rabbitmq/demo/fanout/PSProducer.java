@@ -17,16 +17,16 @@ import java.util.concurrent.TimeoutException;
  **/
 public class PSProducer {
 
-    private final static String EXCHANGE_NAME = "test_exchange_fanout";
-    private final static String ROUTING_KEY = "fanout_routing_key";
+    private final static String EXCHANGE_NAME = "topic.test1";
+    private final static String ROUTING_KEY = "";
 
-    public static void main(String[] args) throws IOException, TimeoutException {
+    public static void main(String[] args) throws Exception {
         /* 获取一个连接 */
         Connection connection = ConnectUtils.getConnect();
         /*从连接中创建通道*/
         Channel channel = connection.createChannel();
         //fanout 分裂
-        channel.exchangeDeclare(EXCHANGE_NAME,"fanout");
+        channel.exchangeDeclare(EXCHANGE_NAME,"fanout",true,false,null);
 
         // 消息内容
         String message = "Hello exhcange fonout";

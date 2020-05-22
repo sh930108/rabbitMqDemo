@@ -5,6 +5,8 @@ import com.rabbitmq.client.Connection;
 import com.rabbitmq.demo.utils.ConnectUtils;
 
 import java.io.IOException;
+import java.security.KeyManagementException;
+import java.security.NoSuchAlgorithmException;
 import java.util.concurrent.TimeoutException;
 
 /**
@@ -16,12 +18,12 @@ import java.util.concurrent.TimeoutException;
  **/
 public class PSProducer {
 
-    private final static String EXCHANGE_NAME = "test_exchange_direct";
-    private final static String ROUTING_KEY = "update";
+    private final static String EXCHANGE_NAME = "shanghao_exchange";
+    private final static String ROUTING_KEY = "shanghao_exchange";
     private static int sendCoundPerSecond = 10000;
 
 
-    public static void main(String[] args) throws IOException, TimeoutException {
+    public static void main(String[] args) throws IOException, TimeoutException, KeyManagementException, NoSuchAlgorithmException {
         /* 获取一个连接 */
         Connection connection = ConnectUtils.getConnect();
         /*从连接中创建通道*/

@@ -18,7 +18,7 @@ public class FairConsumer2 {
 
     private final static String QUEUE_NAME = "fair_dispatch";
 
-    public static void main(String[] args) throws IOException, TimeoutException, InterruptedException {
+    public static void main(String[] args) throws Exception {
         /* 获取一个连接 */
         Connection connection = ConnectUtils.getConnect();
 

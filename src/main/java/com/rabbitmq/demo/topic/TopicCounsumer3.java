@@ -14,10 +14,10 @@ import java.util.concurrent.TimeoutException;
  **/
 public class TopicCounsumer3 {
 
-    private final static String QUEUE_NAME = "topic_queue_3";
-    private final static String EXCHANGE_NAME = "exchange_topic";
+    private final static String QUEUE_NAME = "helloMqtt";
+    private final static String EXCHANGE_NAME = "amq.topic";
 
-    public static void main(String[] args) throws IOException, TimeoutException {
+    public static void main(String[] args) throws Exception {
         /* 获取一个连接 */
         Connection connection = ConnectUtils.getConnect();
         /*从连接中创建通道*/
