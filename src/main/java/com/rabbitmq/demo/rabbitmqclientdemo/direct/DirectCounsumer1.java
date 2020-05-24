@@ -1,10 +1,9 @@
-package com.rabbitmq.demo.direct;
+package com.rabbitmq.demo.rabbitmqclientdemo.direct;
 
 import com.rabbitmq.client.*;
 import com.rabbitmq.demo.utils.ConnectUtils;
 
 import java.io.IOException;
-import java.util.concurrent.TimeoutException;
 
 /**
  * @ClassName FanoutCounsumer

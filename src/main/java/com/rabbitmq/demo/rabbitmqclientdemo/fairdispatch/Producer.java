@@ -1,4 +1,4 @@
-package com.rabbitmq.demo.roundrobin;
+package com.rabbitmq.demo.rabbitmqclientdemo.fairdispatch;
 
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
@@ -12,7 +12,7 @@ import com.rabbitmq.demo.utils.ConnectUtils;
  **/
 public class Producer {
 
-    private final static String QUEUE_NAME = "hello";
+    private final static String QUEUE_NAME = "fair_dispatch";
 
     public static void main(String[] args) throws Exception{
         /* 获取一个连接 */
@@ -28,16 +28,21 @@ public class Producer {
         //如果这个队列不存在,其实这句话是不需要的
         channel.queueDeclare(QUEUE_NAME, durable, exclusive, autoDelete, null);
 
+        int prefetchCount = 1;
+        // 每个消费者发送确认信号之前，消息队列不发送下一个消息过来，一次只处理一个消息
+        // 限制发给同一个消费者不得超过1条消息
+        channel.basicQos(prefetchCount);
+
 
         //第一个参数是exchangeName(默认情况下代理服务器端是存在一个""名字的exchange的,
         //因此如果不创建exchange的话我们可以直接将该参数设置成"",如果创建了exchange的话
         //我们需要将该参数设置成创建的exchange的名字),第二个参数是路由键
-        for(int i=0;i < 50;i++){
+        for(int i=0;i < 100;i++){
             String msg="Hello  Simple QUEUE !"+ i;
             channel.basicPublish("", QUEUE_NAME, null, msg.getBytes());
             System.out.println("[]"+i+"---------send ms :"+msg);
 
-            Thread.sleep(10);
+            Thread.sleep(i*10);
         }
 
         channel.close();

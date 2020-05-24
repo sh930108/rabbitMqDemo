@@ -1,11 +1,8 @@
-package com.rabbitmq.demo.fanout;
+package com.rabbitmq.demo.rabbitmqclientdemo.fanout;
 
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.demo.utils.ConnectUtils;
-
-import java.io.IOException;
-import java.util.concurrent.TimeoutException;
 
 /**
  * @ClassName PSProducer

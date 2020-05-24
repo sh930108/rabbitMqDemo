@@ -1,7 +1,5 @@
-package com.rabbitmq.demo.topic;
+package com.rabbitmq.demo.rabbitmqclientdemo.topic;
 
-import com.rabbitmq.client.AMQP;
-import com.rabbitmq.client.BasicProperties;
 import com.rabbitmq.client.Channel;
 import com.rabbitmq.client.Connection;
 import com.rabbitmq.demo.utils.ConnectUtils;

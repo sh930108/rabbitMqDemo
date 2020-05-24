@@ -36,11 +36,22 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- rabbitMq 依赖  -->
         <dependency>
-            <groupId>com.rabbitmq</groupId>
-            <artifactId>amqp-client</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-amqp</artifactId>
         </dependency>
+
+        <!-- rabbitMq 依赖  -->
+        <!--<dependency>-->
+            <!--<groupId>com.rabbitmq</groupId>-->
+            <!--<artifactId>amqp-client</artifactId>-->
+        <!--</dependency>-->
+        <!-- rabbitmq -->
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.amqp</groupId>-->
+            <!--<artifactId>spring-rabbit</artifactId>-->
+            <!--<version>1.7.5.RELEASE</version>-->
+        <!--</dependency>-->
         <!-- 单元测试 -->
         <dependency>
             <groupId>junit</groupId>

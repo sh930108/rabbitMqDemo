@@ -1,10 +1,9 @@
-package com.rabbitmq.demo.roundrobin;
+package com.rabbitmq.demo.rabbitmqclientdemo.roundrobin;
 
 import com.rabbitmq.client.*;
 import com.rabbitmq.demo.utils.ConnectUtils;
 
 import java.io.IOException;
-import java.util.concurrent.TimeoutException;
 
 /**
  * 简单队列
