@@ -30,10 +30,10 @@ public class ConnectUtils {
     private static final int RABBIT_MQ_PORT = 7102;
     private static final boolean SSL_FLAG = true;
     private static final String RABBIT_MQ_USERNAME = "root";
-    private static final String RABBIT_MQ_PASSWORD = "fzO1C3pJ";
+    private static final String RABBIT_MQ_PASSWORD = "rg8FEcjN";
 
 
-    public  static final String HOST = "10.19.131.13";
+    public  static final String HOST = "10.19.131.23";
 //    public  static final String HOST = "10.19.131.69";
 
     public static Connection getConnect() throws IOException, TimeoutException, NoSuchAlgorithmException, KeyManagementException {
